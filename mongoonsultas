@@ -1,0 +1,78 @@
+README.md — Tarea 4 Big Data (MongoDB Compass)
+
+# Tarea 4 - Big Data  
+## CRUD en MongoDB Compass con Dataset de Población Mundial
+
+Este repositorio contiene la práctica de **consultas, inserciones, actualizaciones y eliminaciones (CRUD)** realizadas en **MongoDB Compass**, utilizando un dataset de **población mundial**.
+
+---
+
+## 1. CONSULTAS (Queries)
+
+###  1.1 Buscar un país específico
+{ "Country/Territory": "Albania" }
+
+1.2 Países de un continent
+{ "Continent": "Europe" }
+
+1.3 Países con población 2022 mayor a 50 millones
+{ "2022 Population": { "$gt": 50000000 } }
+
+1.4 Países con tasa de crecimiento mayor a 1.5%
+{ "Growth Rate": { "$gt": 1.5 } }
+
+1.5 Densidad mayor a 300 personas/km²
+{ "Density (per km²)": { "$gt": 300 } }
+
+1.6 Capital que empieza por “T”
+{ "Capital": { "$regex": "^T", "$options": "i" } }
+
+
+
+2. INSERCIÓN (Create)
+2.1 Insertar un país nuevo
+{
+  "Rank": 500,
+  "CCA3": "AAA",
+  "Country/Territory": "Atlantis",
+  "Capital": "Poseidon",
+  "Continent": "Oceania",
+  "2022 Population": 1500000,
+  "2020 Population": 1400000,
+  "2015 Population": 1300000,
+  "Area (km²)": 50000,
+  "Density (per km²)": 30,
+  "Growth Rate": 1.2,
+  "World Population Percentage": 0.01
+}
+
+3. ACTUALIZACIÓN (Update)
+3.1 Actualizar la capital de un país
+
+Query para ubicar:
+
+{ "Country/Territory": "Albania" }
+
+Update:
+
+{ "$set": { "Capital": "New Tirana" } }
+
+3.2 Actualizar varios campos a la vez
+{
+  "$set": {
+    "Growth Rate": 1.8,
+    "Density (per km²)": 100
+  }
+}
+
+3.3 Incrementar la población 2022
+{
+  "$inc": { "2022 Population": 50000 }
+}
+
+4. BORRADO (Delete)
+🗑 4.1 Eliminar un país específico
+{ "Country/Territory": "Atlantis" }
+
+🗑 4.2 Eliminar países con población 2022 menor a 50 mil
+{ "2022 Population": { "$lt": 50000 } }
